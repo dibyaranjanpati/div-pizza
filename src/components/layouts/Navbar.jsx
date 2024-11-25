@@ -1,12 +1,14 @@
+import { CartContext } from "@/utils/ContextReducer";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
+  const { state } = useContext(CartContext);
   return (
-    <header className="text-white-100 sticky t-0 z-50 bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700 body-font">
+    <header className="text-white-100 sticky t-0 z-50 bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700 body-font ">
       <div className="mx-auto flex flex-wrap p-3 flex-row md:flex-row item-center">
         <Link
           href={"/"}
@@ -36,7 +38,7 @@ const Navbar = () => {
               />
             </svg>
             <span className="inline-flex items-center bg-red-50 py-1 px-2 rounded-full text-xs font-medium text-red-600 ring-1 shadow-[0_0_15px_1px_rgba(220,38,38)]  ring-inset ring-red-600/10">
-              0
+              {state.length}
             </span>
           </Link>
           <Link
@@ -123,13 +125,13 @@ const Navbar = () => {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor"
-            class="w-5 h-5"
+            className="w-5 h-5"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
             />
           </svg>

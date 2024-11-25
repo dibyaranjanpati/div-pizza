@@ -4,7 +4,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="text-white-100 sticky t-0 z-50 bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700 body-font">
+    <footer className="text-white-100 sticky t-0 z-50 bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700 body-font  ">
       <div className="mx-auto flex flex-wrap p-3 flex-row md:flex-row item-center">
         <Link
           href={"/"}
