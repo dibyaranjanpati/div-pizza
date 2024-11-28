@@ -1,16 +1,48 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const Signup = () => {
+  const router = useRouter();
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
     password: "",
-    address: "",
+    geolocation: "",
   });
-  const handleSubmit = (e) => {
+
+  // func for store signUp data to database
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    //
+    const response = fetch("api/userSignUp", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: credentials.name,
+        email: credentials.email,
+        password: credentials.password,
+        location: credentials.geolocation,
+      }),
+    });
+
+    const res = await (await response).json();
+    // const res = await response.json();
+    // console.log(res);
+
+    if (res.success) {
+      localStorage.setItem("token", res.authToken);
+      localStorage.setItem("email", credentials.email);
+
+      router.push("/");
+    } else {
+      alert("There is something went wrong. Please try again");
+    }
   };
+
   const handleChange = (e) => {
     setCredentials({
       ...credentials,
@@ -94,11 +126,11 @@ const Signup = () => {
             <input
               type="text"
               placeholder="Enter Your address"
-              name="address"
+              name="geolocation"
               onChange={handleChange}
               required
               className="shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 focus:border-indigo-700 text-gray-700 dark:text-gray-100  leading-tight focus:outline-none focus:shadow-outline"
-              value={credentials.address}
+              value={credentials.geolocation}
             />
           </div>
           {/* <div className="flex items-center justify-between"></div> */}

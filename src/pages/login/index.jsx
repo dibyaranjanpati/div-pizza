@@ -1,10 +1,37 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const Login = () => {
+  const router = useRouter();
+
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const response = fetch("api/userLogIn", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: credentials.email,
+        password: credentials.password,
+      }),
+    });
+
+    const res = await (await response).json();
+    // const res = await response.json();
+    // console.log(res);
+
+    if (res.success) {
+      localStorage.setItem("token", res.authToken);
+      localStorage.setItem("email", credentials.email);
+
+      router.push("/");
+    } else {
+      alert(res.error);
+    }
   };
   const handleChange = (e) => {
     setCredentials({
