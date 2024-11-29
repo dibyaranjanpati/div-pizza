@@ -61,6 +61,10 @@ const reducer = (state, action) => {
       // console.log(food.price);
       return decrementArr;
 
+    case "DROP":
+      let emptyArr = [];
+      return emptyArr;
+
     default:
       console.log("action.type");
   }

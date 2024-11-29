@@ -68,44 +68,44 @@ const Card = ({ foodData }) => {
               {foodData.description}
             </p>
           </div>
-          <div className="flex px-4 justify-between">
-            <select
-              className=" h-100  p-1 text-black hover:font-bold font-semibold cursor-pointer dark:text-gray-300  border border-black dark:border-gray-400 rounded"
-              onChange={(e) => setQty(e.target.value)}
-            >
-              {Array.from(Array(6), (e, i) => {
-                return (
-                  <option key={i + 1} value={i + 1}>
-                    {i + 1}
-                  </option>
-                );
-              })}
-            </select>
-            <select
-              className=" h-100  p-1 text-black hover:font-bold font-semibold cursor-pointer dark:text-gray-300  border border-black dark:border-gray-400 rounded uppercase"
-              onChange={(e) => setSize(e.target.value)}
-            >
-              {priceOptions.map((options, i) => {
-                // console.log(i, options);
-
-                return (
-                  <option className="uppercase" key={options} value={options}>
-                    {options}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          <div className=" flex p-4 font-bold justify-between">
-            <button
-              onClick={handleAddToCart}
-              className="border dark:border-gray-400 border-gray-900 rounded p-2 hover:bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700  hover:text-gray-100 "
-            >
-              Add to Cart
-            </button>
-            <p className="p-2 text-xl">₹{finalPrice}</p>
-          </div>
         </Link>
+        <div className="flex px-4 justify-between">
+          <select
+            className=" h-100  p-1 text-black hover:font-bold font-semibold cursor-pointer dark:text-gray-300  border border-black dark:border-gray-400 rounded"
+            onChange={(e) => setQty(e.target.value)}
+          >
+            {Array.from(Array(6), (e, i) => {
+              return (
+                <option key={i + 1} value={i + 1}>
+                  {i + 1}
+                </option>
+              );
+            })}
+          </select>
+          <select
+            className=" h-100  p-1 text-black hover:font-bold font-semibold cursor-pointer dark:text-gray-300  border border-black dark:border-gray-400 rounded uppercase"
+            onChange={(e) => setSize(e.target.value)}
+          >
+            {priceOptions.map((options, i) => {
+              // console.log(i, options);
+
+              return (
+                <option className="uppercase" key={options} value={options}>
+                  {options}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <div className=" flex p-4 font-bold justify-between">
+          <button
+            onClick={handleAddToCart}
+            className="border dark:border-gray-400 border-gray-900 rounded p-2 hover:bg-gradient-to-r from-indigo-700 via-violet-700 to-orange-700  hover:text-gray-100 "
+          >
+            Add to Cart
+          </button>
+          <p className="p-2 text-xl">₹{finalPrice}</p>
+        </div>
       </div>
     </div>
   );

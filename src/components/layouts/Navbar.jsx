@@ -72,7 +72,7 @@ const Navbar = () => {
                 href={"/login"}
                 onClick={() => {
                   localStorage.removeItem("token");
-                  localStorage.removeItem("token");
+                  localStorage.removeItem("email");
                 }}
                 className="text-white mr-5 cursor-pointer hover:text-gray-200 flex items-center"
               >
